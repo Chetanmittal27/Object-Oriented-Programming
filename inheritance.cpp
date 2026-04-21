@@ -60,7 +60,12 @@ class Car : public Vehicle {
 
 int main(){
 
-    Vehicle A("Maruti 800" , "LXI" , 4);
+    // Vehicle A("Maruti 800" , "LXI" , 4);
+    Car B("Maruti Suzuki" , "LXZZ" , 4 , 4 , "Manual");
 
     return 0;
 }
+
+
+
+// When instance for any child class is created, then its parent class constructor is called first and after that the constructor of child class is called.
