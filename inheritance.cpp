@@ -9,7 +9,7 @@ using namespace std;
 
 class Vehicle {
 
-    private:
+    protected:
         string name;
 
     public:
@@ -61,7 +61,7 @@ class Car : public Vehicle {
 
     public:
         void startAC(){
-            cout << "AC is Starting of " << getName() << " " << model << endl;
+            cout << "AC is Starting of " << name << " " << model << endl;
         }
 };
 
@@ -80,3 +80,7 @@ int main(){
 
 
 // When instance for any child class is created, then its parent class constructor is called first and after that the constructor of child class is called.
+
+// if some attribute in parent class is private then use concept of getter and setter to print or access that attribute . Studied this concept in Encapsulation.
+
+// If attribute is protected then that attribute is accessible in derived classes but not to the main function.
