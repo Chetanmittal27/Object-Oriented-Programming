@@ -9,8 +9,11 @@ using namespace std;
 
 class Vehicle {
 
-    public:
+    private:
         string name;
+
+    public:
+        // string name;
         string model;
         int noOFTyres;
 
@@ -32,6 +35,11 @@ class Vehicle {
     void stop_engine(){
         cout << "Engine is Stopping " << this -> name << " " << this -> model << endl;
     }
+
+    string getName(){
+        return this -> name;
+    }
+
 };
 
 
@@ -53,7 +61,7 @@ class Car : public Vehicle {
 
     public:
         void startAC(){
-            cout << "AC is Starting of " << this -> name << " " << this -> model << endl;
+            cout << "AC is Starting of " << getName() << " " << model << endl;
         }
 };
 
@@ -62,6 +70,9 @@ int main(){
 
     // Vehicle A("Maruti 800" , "LXI" , 4);
     Car B("Maruti Suzuki" , "LXZZ" , 4 , 4 , "Manual");
+    B.start_engine();
+    B.startAC();
+    B.stop_engine();
 
     return 0;
 }
