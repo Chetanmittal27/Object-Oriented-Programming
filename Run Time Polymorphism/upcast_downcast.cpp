@@ -1,13 +1,11 @@
-// Runtime Polymorphism achieved using Virtual Keyword
-
-
 #include<iostream>
+
 using namespace std;
 
 class Shape {
     public:
         
-        virtual void draw(){
+        void draw(){
             cout << "Generic Drawing..." << endl;
         }
 };
@@ -16,7 +14,7 @@ class Shape {
 class Circle : public Shape {
     public:
         
-        void draw() override {
+        void draw()  {
             cout << "Drawing Circle..." << endl;
         }
 };
@@ -25,7 +23,7 @@ class Circle : public Shape {
 class Rectangle : public Shape {
     public:
         
-        void draw() override {
+        void draw() {
             cout << "Rectangle Drawing..." << endl;
         }
 };
@@ -34,7 +32,7 @@ class Rectangle : public Shape {
 class Triangle : public Shape {
     public:
         
-        void draw() override {
+        void draw() {
             cout << "Triangle Drawing..." << endl;
         }
 };
@@ -48,14 +46,32 @@ void shapeDrawing (Shape *s){
 
 int main(){
 
-    Circle C;
-    Rectangle R;
+    // Circle C;
+    // Rectangle R;
 
-    shapeDrawing(&C);
-    shapeDrawing(&R);
+    // shapeDrawing(&C);
+    // shapeDrawing(&R);
 
-    Triangle *t = new Triangle();
-    shapeDrawing(t);
+    // Triangle *t = new Triangle();
+    // shapeDrawing(t);
+
+
+    // without virtual keyword
+    Shape *s = new Shape();
+    s -> draw();
+
+    // Upcasting
+    Shape *s1 = new Circle();
+    s1 -> draw();
+
+
+    Circle *c = new Circle();
+    c -> draw();
+
+    // Downcasting
+    Shape *s2 = new Shape();
+    Circle *c2 = (Circle *)s2;
+    c2 -> draw();
 
     return 0;
 }
