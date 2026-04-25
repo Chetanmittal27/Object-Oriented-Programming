@@ -1,5 +1,14 @@
 // Exception Handling using try & catch.
 
+
+// Exception : An exception is an unexpected problem that arises during the execution of the program and the program terminates with some errors or issues. Exception occurs during the execution of program (at run time , nor at compile time).
+
+// Try : Try keyword represents a block of code that may throw an exception during the execution of program, when placed inside the try block. Its followed by one or more catch blocks. If an exception occurs, try block can throw an exception.
+
+// Catch : Catch keyword represents a block of code that may be executed when an exception is thrown by try block.
+
+// throw : throw keyword is used to throw an exception in c++.
+
 #include<iostream>
 #include<string>
 
@@ -56,8 +65,14 @@ class Customer {
 int main(){
     
     Customer A("Chetan" , 12345678 , 30000);
-    A.deposit(10000);
-    A.withdraw(0000);
+    try{
+        A.deposit(10000);
+        A.withdraw(50000);
+    }
+    catch(const char *e){
+        cout << "Exception Occured : " << e;
+    }
+
 
     // Customer B("Riya" , 34569038 , 20000);
     // A.deposit(30000);
