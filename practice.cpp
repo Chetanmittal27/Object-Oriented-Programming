@@ -1,59 +1,62 @@
 #include<iostream>
-#include<string>
-
 using namespace std;
 
-class Student {
+class Complex {
 
     public:
-        int id;
-        int age;
-        string name;
-        int nos;
+        int real;
+        int imag;
 
-        Student(int id , int age , string name , int nos){
-            cout << "Student parameterised constructor called" << endl;
-
-            this -> id = id;
-            this -> age = age;
-            this -> name = name;
-            this -> nos = nos;
-        }
-
-        Student(const Student &srcobj){
-            cout << "Copy Constructor called" << endl;
-
-            this -> id = srcobj.id;
-            this -> age = srcobj.age;
-            this -> name = srcobj.name;
-            this -> nos = srcobj.nos;
-        }
-
-        void study(){
-            cout << this -> name << " studying" << endl;
-        }
-
-        void sleep(){
-            cout << this -> name << " sleeping" << endl;
-        }
-
-        void bunk(){
-            cout << this -> name << " bunking" << endl;
+        Complex(){
+            this -> real = -1;
+            this -> imag = -1;
         }
 
 
-        ~Student(){
-            cout << this -> name << " default destructor called" << endl;
+        Complex(int r , int i){
+            this -> real = r;
+            this -> imag = i;
+        }
+
+
+        Complex operator+(const Complex &obj){
+            Complex temp;
+            temp.real = this -> real + obj.real;
+            temp.imag = this -> imag + obj.imag;
+            
+            return temp;
+        }
+
+        bool operator == (const Complex &obj){
+            if((this -> real == obj.real) && (this -> imag == obj.imag)){
+                return true;
+            }
+
+            return false;
+        }
+
+
+    public:
+        void print(){
+            cout << "{" << this -> real << " + " << "i" << this -> imag << "}" << endl;
         }
 };
 
 
 int main(){
-    
-    Student A(1 , 21 , "Chetan" , 6);
-    
-    Student C = A;
 
+    Complex A(4 , 7);
+    A.print();
+
+    Complex B(2 , 8);
+    B.print();
+
+
+    Complex C = A + B;
+    C.print();
+
+    bool d = A == B;
+    cout << d;
 
     return 0;
 }
