@@ -1,62 +1,43 @@
 #include<iostream>
 using namespace std;
 
-class Complex {
+class Shape {
 
     public:
-        int real;
-        int imag;
-
-        Complex(){
-            this -> real = -1;
-            this -> imag = -1;
-        }
-
-
-        Complex(int r , int i){
-            this -> real = r;
-            this -> imag = i;
-        }
-
-
-        Complex operator+(const Complex &obj){
-            Complex temp;
-            temp.real = this -> real + obj.real;
-            temp.imag = this -> imag + obj.imag;
-            
-            return temp;
-        }
-
-        bool operator == (const Complex &obj){
-            if((this -> real == obj.real) && (this -> imag == obj.imag)){
-                return true;
-            }
-
-            return false;
-        }
-
-
-    public:
-        void print(){
-            cout << "{" << this -> real << " + " << "i" << this -> imag << "}" << endl;
+        virtual void draw(){
+            cout << "Generic Drawing..." << endl;
         }
 };
 
 
+class Circle : public Shape {
+    
+    public:
+        void draw(){
+            cout << "Circle Drawing..." << endl;
+        }
+};
+
+
+class Rectangle : public Shape {
+
+    public:
+        void draw(){
+            cout << "Rectangle Drawing..." << endl;
+        }
+};
+
+
+void shapeDrawing(Shape *c){
+    return c -> draw();
+}
+
 int main(){
 
-    Complex A(4 , 7);
-    A.print();
+    Circle C;
+    Rectangle R;
 
-    Complex B(2 , 8);
-    B.print();
-
-
-    Complex C = A + B;
-    C.print();
-
-    bool d = A == B;
-    cout << d;
-
+    shapeDrawing(&C);
+    shapeDrawing(&R);
     return 0;
 }
